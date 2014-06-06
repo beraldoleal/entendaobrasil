@@ -5,16 +5,52 @@
 
   <div class="row">
 
-  <h2>Deputados Federais <small>{{ parlamentares.count }}</small></h2>
+    <div class="col-md-8">
+      <h2>Deputados Federais <small>{{ parlamentares.count }}</small></h2>
+      <p class="text-muted"><small>Deputado federal é o representante eleito
+para a Câmara dos Deputados, uma das duas casas do poder legislativo federal no
+Brasil. De acordo com a Constituição Federal do Brasil de 1988, é o
+representante nacional popular, eleito por voto direito. O mandato é de quatro
+anos, podendo o candidato concorrer a sucessivas re-eleições. Compete ao
+deputado federal o ato de legislar e manter-se como guardião fiel das leis e
+dogmas constitucionais nacionais, inclusive podendo propor, emendar, alterar,
+revogar, derrogar leis, leis complementares, emenda à Constituição Federal e
+propor emenda para a constituição de um novo Congresso Constituinte para
+confecção de nova Constituição.*<h6>*Texto retirado da
+<a href="http://pt.wikipedia.org/wiki/Deputado_federal">Wikipedia</a>.</h6></small></p>
+    </div>
 
-  <!-- Homens vs Mulheres -->
-  <div class="progress">
-    <div class="progress-bar progress-bar-info" style="width: {{ homens|as_percentage_of:parlamentares.count }}">
-      {{ homens|as_percentage_of:parlamentares.count }} Homens ( {{ homens }})
+    <div class="hxm col-md-4">
+
+      <div class="list-group">
+      
+        <a href="#" class="list-group-item active">
+          <h4 class="list-group-item-heading">Homens x Mulheres</h4>
+          <p class="list-group-item-text">Para cada 12 homens a casa possui
+apenas 1 mulher. No total são {{ homens }} homens e apenas {{ mulheres }}
+mulheres.</p> </a>
+      
+        <a href="#" class="list-group-item">
+          <!-- Homens x Mulheres Char -->
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" style="width: {{ homens|as_percentage_of:parlamentares.count }}">
+                {{ homens|as_percentage_of:parlamentares.count }} Homens ( {{ homens }})
+              </div>
+              <div class="progress-bar progress-bar-danger" style="width: {{ mulheres|as_percentage_of:parlamentares.count }}">
+                {{ mulheres|as_percentage_of:parlamentares.count }} Mulheres ( {{ mulheres }} )
+              </div>
+            </div>
+        {% for i in "x"|rjust:"7" %}
+          <i class="fa fa-female fa-fw fa-2x" style="color:#FF66FF"></i>
+        {% endfor %}
+        {% for i in "x"|rjust:"92" %}
+          <i class="fa fa-male fa-fw fa-2x" style="color:#3399FF"></i>
+        {% endfor %}
+        </a>
+      
+      </div>
     </div>
-    <div class="progress-bar progress-bar-danger" style="width: {{ mulheres|as_percentage_of:parlamentares.count }}">
-      {{ mulheres|as_percentage_of:parlamentares.count }} Mulheres ( {{ mulheres }} )
-    </div>
+
   </div>
 
   {% if parlamentares %}
