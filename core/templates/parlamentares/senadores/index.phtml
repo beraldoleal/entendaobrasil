@@ -1,0 +1,49 @@
+{% extends "base.phtml" %}
+{% load core_extras %}
+
+{% block content %}
+
+  <div class="row">
+
+  <h2>Senadores Federais <small>{{ parlamentares.count }}</small></h2>
+
+  <!-- Homens vs Mulheres -->
+  <div class="progress">
+    <div class="progress-bar progress-bar-info" style="width: {{ homens|as_percentage_of:parlamentares.count }}">
+      {{ homens|as_percentage_of:parlamentares.count }} Homens ( {{ homens }})
+    </div>
+    <div class="progress-bar progress-bar-danger" style="width: {{ mulheres|as_percentage_of:parlamentares.count }}">
+      {{ mulheres|as_percentage_of:parlamentares.count }} Mulheres ( {{ mulheres }} )
+    </div>
+  </div>
+
+
+  {% if parlamentares %}
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nome</th>
+          <th>UF</th>
+          <th>Partido</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for parlamentar in parlamentares %}
+        <tr>
+          <td><img src="{{ parlamentar.url_foto }}" class="img-thumbnail"></td>
+          <td><a href="{% url "senador" parlamentar.id_parlamentar %}">{{ parlamentar.nome|title }}</a></td>
+          <td>{{ parlamentar.uf }}</td>
+          <td>{{ parlamentar.partido.sigla }}</td>
+          <td>{{ parlamentar.tipo }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Sem parlamentares.</p>
+  {% endif %}
+  </div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% if partidos %}
+    <ul>
+    {% for partido in partidos %}
+        <li><a href="/partido/{{ partido.id }}/">{{ partido.sigla }}</a> - {{ partido.nome }} ({{ partido.parlamentar_set.count }} Parlamentares)</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Sem partidos.</p>
+{% endif %}

@@ -1,0 +1,90 @@
+{% extends "base.phtml" %}
+{% load core_extras %}
+
+{% block content %}
+
+  {% if deputado %}
+    
+    <!-- Foto e contatos -->
+    <div class="row col-lg-3">
+
+       <div class="text-center">
+         <img src="{{ deputado.url_foto }}" class="img-thumbnail">
+       </div>
+
+       <div class="row center-block">
+         <table class="table table-condensed top-buffer">
+             <tr>
+                 <td><small><span class="fa fa-phone"></span> Telefone</small></td>
+                 <td><small><span class="pull-right">{{ deputado.telefone }}</small></span></td>
+             </tr>
+             <tr>
+                 <td><small><span class="fa fa-fax"></span> Fax</small></td>
+                 <td><small><span class="pull-right">{{ deputado.fax }}</span></small></td>
+             </tr>
+             <tr>
+                 <td><small><span class="fa fa-envelope"></span> Email</small></td>
+                 <td><small><span class="pull-right"><a href="mailto:{{ deputado.email }}">{{ deputado.email|truncatechars:15 }}</a></span></small></td>
+             </tr>
+             <tr>
+                 <td><small><span class="fa fa-cloud"></span> Site</small></td>
+                 <td><small><span class="pull-right"><a href="{{ deputado.site }}">{{ deputado.site }}</a></span></small></td>
+             </tr>
+             <tr>
+                 <td><small><span class="fa fa-graduation-cap"></span> Wikipedia</small></td>
+                 <td><small><span class="pull-right"><a href="{{ deputado.wikipedia }}">{{ deputado.wikipedia|truncatechars:20 }}</span></small></td>
+             </tr>
+             <tr>
+                 <td><small><span class="fa fa-facebook"></span> Facebook</small></td>
+                 <td><small><span class="pull-right">{{ deputado.email|truncatechars:15 }}</span></small></td>
+             </tr>
+             <tr>
+                 <td><small><span class="fa fa-twitter"></span> Twitter</small></td>
+                 <td><small><span class="pull-right">{{ deputado.email|truncatechars:15 }}</span></small></td>
+             </tr>
+             <tr>
+                 <td><small><span class="fa fa-linkedin"></span> Linkedin</small></td>
+                 <td><small><span class="pull-right">{{ deputado.email|truncatechars:15 }}</span></small></td>
+             </tr>
+             {% if deputado.endereco %}
+             <tr>
+                 <td colspan=2><small>{{ deputado.endereco }}</small></td>
+             </tr>
+             {% endif %}
+         </table>
+      </div>
+    </div>
+
+    <!-- Resumo e estatísticas -->
+    <div class="row col-lg-9">
+
+      <div class="row">
+        <div class="col-lg-8">
+              <h4><strong>{{ deputado.tratamento }} {{ deputado.nome|title }}</strong> <small><span class="label label-{{deputado.condicao|condicao_class}}">{{ deputado.condicao|condicao}}</span> {{ deputado.partido.sigla }}</small></h4>
+
+            <p class="text-muted"><small>{{ deputado.sumario }}*<h6>*Texto retirado da <a href="{{ deputado.wikipedia }}">Wikipedia</a></h6></small></p>
+        </div>
+
+        <div class="col-lg-1">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">Estatísticas</h4>
+              </div>
+              <div class="panel-body">
+                Panel content
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        
+      </div>
+
+    </div>
+
+  {% else %}
+    <p>Deputado não encontrado.</p>
+  {% endif %}
+
+{% endblock %}

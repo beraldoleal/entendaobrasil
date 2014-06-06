@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?>
+<partidos>
+  <partido>
+    <idPartido>SD</idPartido>
+    <siglaPartido>SD</siglaPartido>
+    <nomePartido>Solidariedade</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PEN</idPartido>
+    <siglaPartido>PEN</siglaPartido>
+    <nomePartido>Partido Ecológico Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PPL</idPartido>
+    <siglaPartido>PPL</siglaPartido>
+    <nomePartido>Partido Pátria Livre</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PROS</idPartido>
+    <siglaPartido>PROS</siglaPartido>
+    <nomePartido>Partido Republicano da Ordem Social</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>SDD</idPartido>
+    <siglaPartido>SDD</siglaPartido>
+    <nomePartido>Solidariedade</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>24/04/2014</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>AIB</idPartido>
+    <siglaPartido>AIB</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>AL</idPartido>
+    <siglaPartido>AL</siglaPartido>
+    <nomePartido>Aliança Libertadora</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>ARENA</idPartido>
+    <siglaPartido>ARENA</siglaPartido>
+    <nomePartido>Aliança Renovadora Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>DEM</idPartido>
+    <siglaPartido>DEM</siglaPartido>
+    <nomePartido>Democratas</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>ED</idPartido>
+    <siglaPartido>ED</siglaPartido>
+    <nomePartido>Esquerda Democrática</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>25/08/1947</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>FUG</idPartido>
+    <siglaPartido>FUG</siglaPartido>
+    <nomePartido>Frente Única Gaúcha</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>LASP</idPartido>
+    <siglaPartido>LASP</siglaPartido>
+    <nomePartido>Liga de Ação Social e Política</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>LEC</idPartido>
+    <siglaPartido>LEC</siglaPartido>
+    <nomePartido>Liga Eleitoral Católica</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>MDB</idPartido>
+    <siglaPartido>MDB</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>MTR</idPartido>
+    <siglaPartido>MTR</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PAN</idPartido>
+    <siglaPartido>PAN</siglaPartido>
+    <nomePartido>Partido dos Aposentados da Nação</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>11/06/2007</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PC</idPartido>
+    <siglaPartido>PC</siglaPartido>
+    <nomePartido>Partido Comunista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PCB</idPartido>
+    <siglaPartido>PCB</siglaPartido>
+    <nomePartido>Partido Comunista Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>09/05/1996</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PCdoB</idPartido>
+    <siglaPartido>PCdoB</siglaPartido>
+    <nomePartido>Partido Comunista do Brasil</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PCN</idPartido>
+    <siglaPartido>PCN</siglaPartido>
+    <nomePartido>Partido Comunitário  Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PCO</idPartido>
+    <siglaPartido>PCO</siglaPartido>
+    <nomePartido>Partido da Causa Operária</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PD</idPartido>
+    <siglaPartido>PD</siglaPartido>
+    <nomePartido>Partido Democrático</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PDC</idPartido>
+    <siglaPartido>PDC</siglaPartido>
+    <nomePartido>Partido Democrático Cristão</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PDR</idPartido>
+    <siglaPartido>PDR</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PDS</idPartido>
+    <siglaPartido>PDS</siglaPartido>
+    <nomePartido>Partido Democrático Social</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PDT</idPartido>
+    <siglaPartido>PDT</siglaPartido>
+    <nomePartido>Partido Democrático Trabalhista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PE</idPartido>
+    <siglaPartido>PE</siglaPartido>
+    <nomePartido>Partido Economista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PED</idPartido>
+    <siglaPartido>PED</siglaPartido>
+    <nomePartido>Partido Economista Democrático</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PF</idPartido>
+    <siglaPartido>PF</siglaPartido>
+    <nomePartido>Partido Federalista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PFL</idPartido>
+    <siglaPartido>PFL</siglaPartido>
+    <nomePartido>Partido da Frente Liberal</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>23/04/2007</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PGT</idPartido>
+    <siglaPartido>PGT</siglaPartido>
+    <nomePartido>Partido Geral dos Trabalhadores</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PHDBS</idPartido>
+    <siglaPartido>PHDBS</siglaPartido>
+    <nomePartido>Partido Humanista Democrático Brasil Solidariedade</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PHS</idPartido>
+    <siglaPartido>PHS</siglaPartido>
+    <nomePartido>Partido Humanista da Solidariedade</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PJ</idPartido>
+    <siglaPartido>PJ</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PL</idPartido>
+    <siglaPartido>PL</siglaPartido>
+    <nomePartido>Partido Liberal</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>25/01/2007</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PLC</idPartido>
+    <siglaPartido>PLC</siglaPartido>
+    <nomePartido>Partido Liberal Catarinense</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PLl</idPartido>
+    <siglaPartido>PLl</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PM</idPartido>
+    <siglaPartido>PM</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PMB</idPartido>
+    <siglaPartido>PMB</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PMDB</idPartido>
+    <siglaPartido>PMDB</siglaPartido>
+    <nomePartido>Partido do Movimento Democrático Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PMN</idPartido>
+    <siglaPartido>PMN</siglaPartido>
+    <nomePartido>Partido da Mobilização Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PMR</idPartido>
+    <siglaPartido>PMR</siglaPartido>
+    <nomePartido>Partido Municipalista Renovador</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PN</idPartido>
+    <siglaPartido>PN</siglaPartido>
+    <nomePartido>Partido Nilista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PNA</idPartido>
+    <siglaPartido>PNA</siglaPartido>
+    <nomePartido>Partido Nacional de Alagoas</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PNC</idPartido>
+    <siglaPartido>PNC</siglaPartido>
+    <nomePartido>Partido Nacional do Consumidor</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PNE</idPartido>
+    <siglaPartido>PNE</siglaPartido>
+    <nomePartido>Partido Nacional Evangélico</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PNI</idPartido>
+    <siglaPartido>PNI</siglaPartido>
+    <nomePartido>Não Informado</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PNS</idPartido>
+    <siglaPartido>PNS</siglaPartido>
+    <nomePartido>Partido Nacional Socialista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PP</idPartido>
+    <siglaPartido>PP</siglaPartido>
+    <nomePartido>Partido Progressista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PPA</idPartido>
+    <siglaPartido>PPA</siglaPartido>
+    <nomePartido>Partido Popular do Acre</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PPB</idPartido>
+    <siglaPartido>PPB</siglaPartido>
+    <nomePartido>Partido Progressista Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PPR</idPartido>
+    <siglaPartido>PPR</siglaPartido>
+    <nomePartido>Partido Progressista Reformador</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PPS</idPartido>
+    <siglaPartido>PPS</siglaPartido>
+    <nomePartido>Partido Popular Socialista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PR</idPartido>
+    <siglaPartido>PR</siglaPartido>
+    <nomePartido>Partido da República</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRB</idPartido>
+    <siglaPartido>PRB</siglaPartido>
+    <nomePartido>Partido Republicano Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRC</idPartido>
+    <siglaPartido>PRC</siglaPartido>
+    <nomePartido>Partido Republicano Conservador</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRD</idPartido>
+    <siglaPartido>PRD</siglaPartido>
+    <nomePartido>Partido Republicano Democrata da Bahia</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRE</idPartido>
+    <siglaPartido>PRE</siglaPartido>
+    <nomePartido>Partido Republicano</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRF</idPartido>
+    <siglaPartido>PRF</siglaPartido>
+    <nomePartido>Partido Republicano Federal</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRL</idPartido>
+    <siglaPartido>PRL</siglaPartido>
+    <nomePartido>Partido Republicano Liberal</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRM</idPartido>
+    <siglaPartido>PRM</siglaPartido>
+    <nomePartido>Partido Republicano Mineiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRN</idPartido>
+    <siglaPartido>PRN</siglaPartido>
+    <nomePartido>Partido da Reconstrução Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRONA</idPartido>
+    <siglaPartido>PRONA</siglaPartido>
+    <nomePartido>Partido de Reedificação da Ordem Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>25/01/2007</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRP</idPartido>
+    <siglaPartido>PRP</siglaPartido>
+    <nomePartido>Partido Republicano Progressista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRPa</idPartido>
+    <siglaPartido>PRPa</siglaPartido>
+    <nomePartido>Partido Republicano Paulista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRR</idPartido>
+    <siglaPartido>PRR</siglaPartido>
+    <nomePartido>Partido Republicano Rio-Grandense</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRS</idPartido>
+    <siglaPartido>PRS</siglaPartido>
+    <nomePartido>Partido das Reformas Sociais</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRT</idPartido>
+    <siglaPartido>PRT</siglaPartido>
+    <nomePartido>Partido Republicano Trabalhista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRTB</idPartido>
+    <siglaPartido>PRTB</siglaPartido>
+    <nomePartido>Partido Renovador Trabalhista Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PRVP</idPartido>
+    <siglaPartido>PRVP</siglaPartido>
+    <nomePartido>Partido de Representação da Vontade Popular</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PS</idPartido>
+    <siglaPartido>PS</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSB</idPartido>
+    <siglaPartido>PSB</siglaPartido>
+    <nomePartido>Partido Socialista Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSC</idPartido>
+    <siglaPartido>PSC</siglaPartido>
+    <nomePartido>Partido Social Cristão</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSD</idPartido>
+    <siglaPartido>PSD</siglaPartido>
+    <nomePartido>Partido Social Democrático</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSDB</idPartido>
+    <siglaPartido>PSDB</siglaPartido>
+    <nomePartido>Partido da Social Democracia Brasileira</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSDC</idPartido>
+    <siglaPartido>PSDC</siglaPartido>
+    <nomePartido>Partido Social Democrata Cristão</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSL</idPartido>
+    <siglaPartido>PSL</siglaPartido>
+    <nomePartido>Partido Social Liberal</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSN</idPartido>
+    <siglaPartido>PSN</siglaPartido>
+    <nomePartido>Partido da Solidariedade Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSOL</idPartido>
+    <siglaPartido>PSOL</siglaPartido>
+    <nomePartido>Partido Socialismo e Liberdade</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSP</idPartido>
+    <siglaPartido>PSP</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSR</idPartido>
+    <siglaPartido>PSR</siglaPartido>
+    <nomePartido>Partido Social Republicano</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PST</idPartido>
+    <siglaPartido>PST</siglaPartido>
+    <nomePartido>Partido Social Trabalhista</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PSTU</idPartido>
+    <siglaPartido>PSTU</siglaPartido>
+    <nomePartido>Partido Socialista dos Trabalhadores Unificado</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PT</idPartido>
+    <siglaPartido>PT</siglaPartido>
+    <nomePartido>Partido dos Trabalhadores</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PTB</idPartido>
+    <siglaPartido>PTB</siglaPartido>
+    <nomePartido>Partido Trabalhista Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PTC</idPartido>
+    <siglaPartido>PTC</siglaPartido>
+    <nomePartido>Partido Trabalhista Cristão</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PTdoB</idPartido>
+    <siglaPartido>PTdoB</siglaPartido>
+    <nomePartido>Partido Trabalhista do Brasil</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PTN</idPartido>
+    <siglaPartido>PTN</siglaPartido>
+    <nomePartido>Partido Trabalhista Nacional</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PTR</idPartido>
+    <siglaPartido>PTR</siglaPartido>
+    <nomePartido>Partido Trabalhista Renovador</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PTRB</idPartido>
+    <siglaPartido>PTRB</siglaPartido>
+    <nomePartido>Partido Trabalhista Renovador Brasileiro</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>PV</idPartido>
+    <siglaPartido>PV</siglaPartido>
+    <nomePartido>Partido Verde</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>S.PART.</idPartido>
+    <siglaPartido>S.PART.</siglaPartido>
+    <nomePartido>Sem Partido</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>
+    </dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>UDB</idPartido>
+    <siglaPartido>UDB</siglaPartido>
+    <nomePartido>União Democrática Brasileira</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>UDN</idPartido>
+    <siglaPartido>UDN</siglaPartido>
+    <nomePartido>--</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+  <partido>
+    <idPartido>UPF</idPartido>
+    <siglaPartido>UPF</siglaPartido>
+    <nomePartido>União Progressista Fluminense</nomePartido>
+    <dataCriacao>
+    </dataCriacao>
+    <dataExtincao>01/01/1950</dataExtincao>
+  </partido>
+</partidos>
