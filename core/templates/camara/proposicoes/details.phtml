@@ -1,0 +1,62 @@
+{% extends "base.phtml" %}
+{% load core_extras %}
+
+{% block content %}
+
+  {% if proposicao %}
+    <div class="col-md-8">
+
+      <div class="row">
+        <h2>{{ proposicao.nome }}<br>
+        <small>{{ proposicao.tipo }}</small></h2>
+      </div>
+
+      <div class="row top-buffer">
+        <p>{{ proposicao.explicacao }}</p>
+        <p class="text-muted">{{ proposicao.ementa }}</p>
+      </div> 
+
+    </div>
+
+    <div class="col-md-4">
+      <table class="table table-condensed top-buffer">
+        <img src="{{ proposicao.autor.fotos_perfil|first }}" class="img-responsive">
+        <tr>
+          <td><span class="fa fa-user fa-fw"></span><small> Autor: <span class="pull-right"><a href="{% url "deputado" proposicao.autor.ide_cadastro %}">{{ proposicao.autor.nome_parlamentar|title }}</a> {{ proposicao.autor.partido }}</span></small></td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calendar fa-fw"></span><small> Data Apresentação: <span class="pull-right">{{ proposicao.data_apresentacao|date:"d/m/Y - G:i:s" }}</span></small></td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-group fa-fw"></span><small> Quantidade de Autores: <span class="pull-right">{{ proposicao.quantidade_autores }}</span></small></td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gavel fa-fw"></span><small> Situação: <span class="pull-right">{{ proposicao.situacao }}</span></small></td>
+        </tr>
+      </table>
+
+    </div>
+
+
+    <div class="col-md-12">
+
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#exercicios" data-toggle="tab">Exercícios na Câmara <span class="label label-info">{{ exercicios.count }}</span></a></li>
+        <li><a href="#proposicoes" data-toggle="tab">Proposições <span class="label label-info">{{ deputado.proposicao_set.all.count }}</span></a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="exercicios">{% include "camara/deputados/exercicios.phtml" %}</div>
+        <div class="tab-pane fade" id="proposicoes">{% include "camara/deputados/proposicoes.phtml" %}</div>
+        <div class="tab-pane fade" id="profile">Profile</div>
+        <div class="tab-pane fade" id="messages">...</div>
+        <div class="tab-pane fade" id="settings">...</div>
+      </div>
+
+    </div>
+  {% else %}
+    <p>Deputado não encontrado.</p>
+  {% endif %}
+
+{% endblock %}

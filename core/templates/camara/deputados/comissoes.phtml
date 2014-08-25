@@ -1,0 +1,65 @@
+{% load core_extras %}
+<div class="row top-buffer">
+
+  <div class="col-md-12">
+    <h2>Comissões Atuais</h2>
+    {% if deputado.comissoes_atuais %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="15%">Cargo</th>
+          <th>Orgão</th>
+          <th width="10%">Data Entrada</th>
+          <th width="10%">Data Saída</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cargoorgao in deputado.comissoes_atuais %}
+          <tr>
+            <td>{{ cargoorgao.cargo.descricao }}</td>
+            <td><a href="{% url "orgao" cargoorgao.orgao.sigla %}">{{ cargoorgao.orgao.sigla }} - {{ cargoorgao.orgao.descricao }}</a></td>
+            <td>{{ cargoorgao.data_entrada|date:"d/m/Y" }}</td>
+            <td>{{ cargoorgao.data_saida|date:"d/m/Y" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+        <p>Parlamentar não está em nenhum orgão da câmara atualmente.</p>
+    {% endif %}
+  </div> <!-- .col-md-12 -->
+
+  <div class="col-md-12">
+    <h2>Comissões Passadas</h2>
+    {% if deputado.comissoes_passadas %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="15%">Cargo</th>
+          <th>Orgão</th>
+          <th width="10%">Data Entrada</th>
+          <th width="10%">Data Saída</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cargoorgao in deputado.comissoes_passadas %}
+          <tr>
+            <td>{{ cargoorgao.cargo.descricao }}</td>
+            <td><a href="{% url "orgao" cargoorgao.orgao.sigla %}">{{ cargoorgao.orgao.sigla }} - {{ cargoorgao.orgao.descricao }}</a></td>
+            <td>{{ cargoorgao.data_entrada|date:"d/m/Y" }}</td>
+            <td>{{ cargoorgao.data_saida|date:"d/m/Y" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+        <p>Paralmentar não esteve em nenhum orgão da câmara no passado.</p>
+    {% endif %}
+  </div> <!-- .col-md-12 -->
+
+  <div class="col-md-12">
+    <div class="alert alert-warning"><strong>Aviso!</strong><p>Infelizmente a Câmara dos Deputados Federais disponibiliza apenas os dados das duas últimas legislaturas (54a. e 53a.). Caso você sinta falta de algum dado, por favor, entre em contato em contato@entendaobrasil.org</p>
+</div>
+  </div>
+
+</div>
