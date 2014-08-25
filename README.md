@@ -14,13 +14,18 @@ Instalação
     $ git clone git@github.com:beraldoleal/entendaobrasil.git .
     $ pip install requirements.txt
 
-Executando
-----------
+Importação Inicial
+------------------
 
     $ export PYTHONPATH=dir:$PYTHONPATH
     $ export DJANGO_SETTINGS_MODULE=entendaobrasil.settings
     $ python manage.py syncdb
     $ python scripts/import.py
     $ python utils/deputados_fotos.py
+
+Para maiores detalhes veja o arquivo 'IMPORTACAO.md'.
+
+Executando
+----------
 
     $ python manage.py runserver
