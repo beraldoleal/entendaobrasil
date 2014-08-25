@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2014 Beraldo Leal <beraldo@ime.usp.br>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version
+# 2 as published by the Free Software Foundation.
+#
+# vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab
+
 """
 Django settings for entendaobrasil project.
 
@@ -7,9 +17,10 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
+import os
+import logging
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -25,7 +36,6 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -51,7 +61,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'entendaobrasil.urls'
 
 WSGI_APPLICATION = 'entendaobrasil.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -83,4 +92,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '%s/static/' % BASE_DIR
+STATIC_ROOT = '/tmp/entendaobrasil/static' # for development
+
+### Configurações personalizadas ###
+
+# Nivel de verbosidade durante a importacao dos dados
+CAMARA_API_LOG_LEVEL = logging.INFO

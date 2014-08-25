@@ -15,10 +15,75 @@ body {
     height: 100px;
 }
 
-.top-buffer { margin-top:20px; }
+.top-buffer { margin-top:10px; }
 
 .fa-fw {
     width: 23px;
     text-align: center;
     margin: 1px;
+}
+
+.deputados-header {
+    height: 500px;
+}
+
+.affix-top,.affix{
+ position: static;
+}
+
+.thumb-main {
+    padding-left: 0px; !important
+    padding-right: 0px; !important
+}
+
+.thumbs {
+    padding-left: 0px; !important
+    padding-right: 0px; !important
+    padding-top: 8px; !important
+}
+
+
+.thumb-main img {
+    margin: 0px;
+}
+.thumbs img {
+    margin: 3px;
+}
+
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+    margin-top:30px;
+    width:158px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:158px;
+  }
+}
+
+#sidebar li.active {
+  border:0 #1abc9c solid;
+  border-right-width:5px;
+}
+
+#sidebar li a {
+padding: 2px 10px;
+}
+
+#side-nav.affix{
+  position: fixed;
+  top: 500px;
+}
+
+.bs-callout-warning {
+    background-color: #FCF8F2;
+    border-color: #F0AD4E !important;
+}
+.bs-callout {
+    padding: 1px 10px 10px 10px;
+    border-left: 3px solid #EEE;
 }

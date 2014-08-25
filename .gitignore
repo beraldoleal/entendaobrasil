@@ -1,2 +1,3 @@
 db.sqlite3
+core/static/photos/
 *.pyc

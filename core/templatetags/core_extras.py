@@ -1,11 +1,10 @@
+# -*- coding: utf-8 -*-
 from django import template
 from django.template.defaultfilters import floatformat
 from django.template.defaultfilters import stringfilter
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 import re
-
-
 
 register = template.Library()
 
@@ -29,6 +28,19 @@ def condicao_class(value):
         return 'success'
     else:
         return 'default'
+
+@register.filter
+def exercicio_data(data):
+    if data is not None:
+        return data
+    else:
+        return "Ate o momento."
+
+
+@register.filter
+def short_job(value):
+    return value.split(',')[0]
+
 
 @register.filter
 @stringfilter

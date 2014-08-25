@@ -1,0 +1,38 @@
+{% load core_extras %}
+<div class="row top-buffer">
+
+  <div class="col-md-8">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="15%">Nome / Data</th>
+              <th>Texto Ementa</th>
+              <th>Situação</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in proposicoes %}
+              <tr>
+                <td>{{ p.nome }}<br>{{ p.data_apresentacao|date:"d/m/Y" }}</td>
+                <td><a href="{% url "proposicao" p.id %}">{{ p.ementa }}</a></td>
+                <td>{{ p.situacao }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+  </div> <!-- .col-md-8 -->
+
+  <div class="col-md-4">
+    <div class="bs-callout bs-callout-warning">
+      <h4><strong>Se informe:</strong></h4>
+<p>A Câmara dos deputados possui Comissões Parlamentares, Permanentes ou Temporárias, com funções legislativas e fiscalizadoras, na forma definida na Constituição Federal e nos seus Regimentos Internos. No cumprimento dessas duas funções básicas, de elaboração das leis e de acompanhamento das ações administrativas, no âmbito do Poder Executivo, as Comissões promovem, também, debates e discussões com a participação da <strong>sociedade em geral</strong>, sobre todos os temas ou assuntos de seu interesse.</p>
+
+<p>É também no âmbito das comissões que se apresentam e se estudam todos os dados, antecedentes, circunstâncias e conveniência de um projeto. Nas Comissões se possibilita que esses aspectos sofram ampla discussão e haja mais liberdade para expressão das opiniões e formação do consenso que, emitido sob a forma de parecer da Comissão, irá orientar o Plenário na apreciação da matéria.</p>
+
+<p>São duas as formas de apreciação: a conclusiva, quando os projetos são apreciados somente pelas Comissões, que têm o poder de aprová-los ou rejeitá-los, sem ouvir o Plenário; e a realizada pelo Plenário propriamente dita, quando este é quem dá a palavra final sobre o projeto, após a análise das comissões.</p>
+
+<p>O Regimento estabelece (art. 24, II) quando o projeto será conclusivo nas Comissões ou se deverá também ser apreciado pelo Plenário. De forma geral, os projetos que afetam direitos constitutionais mais delicados, como o direito à vida e à liberdade, entre outros, deverão passar pelo o crivo do Plenário.</p>
+    </div>
+  </div> <!-- .col-md-4 -->
+
+</div>

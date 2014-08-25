@@ -1,0 +1,43 @@
+{% load core_extras %}
+<div class="row top-buffer">
+
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Situação</th>
+          <th>Data Início</th>
+          <th>Data Fim</th>
+          <th>Causa do Término</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for exercicio in exercicios %}
+          <tr>
+            <td>{{ exercicio.situacao }}</td>
+            <td>{{ exercicio.data_inicio|date:"d/m/Y" }}</td>
+            <td>{{ exercicio.data_fim|exercicio_data|date:"d/m/Y" }}</td>
+            <td>{{ exercicio.causa_fim }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div> <!-- .col-md-8 -->
+
+  <div class="col-md-8">
+    <div class="alert alert-warning"><strong>Aviso!</strong><p>Infelizmente a Câmara dos Deputados Federais disponibiliza apenas os dados das duas últimas legislaturas (54a. e 53a.). Caso você sinta falta de algum dado, por favor, entre em contato em contato@entendaobrasil.org</p>
+</div>
+  </div>
+
+
+
+  <div class="col-md-4">
+    <div class="bs-callout bs-callout-warning">
+      <h4><strong>Se informe:</strong></h4>
+      <p>O mandato de um deputado é uma atribuição concedida ao deputado, pelo voto do cidadão, para representá-lo, votar e agir em seu nome. O Deputado Federal tem mandato de quatro anos, podendo o candidato concorrer a sucessivas eleições. </p>
+      <p>O afastamento pode ocorrer por licença, nos casos previstos no art. 235 do Regimento Interno da Câmara dos Deputados, ou por vacância (falecimento, renúncia ou perda de mandato). Nos casos de vacância e de licença superior a 120 dias ou para investidura nos cargos definidos no art. 56 da Constituição Federal, será convocado o suplente. </p>
+    </div>
+  </div> <!-- .col-md-4 -->
+
+
+</div>

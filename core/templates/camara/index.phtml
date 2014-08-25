@@ -1,0 +1,91 @@
+{% extends "base.phtml" %}
+{% load core_extras %}
+
+{% block content %}
+
+  <div class="content">
+
+    <div class="col-md-12 deputados-header">
+
+      <div class="col-md-8">
+        <div class="row">
+        <h2>Câmara dos Deputados <small>{{ deputados.count }} deputados</small></h2>
+        <p class="text-muted"><small>A Câmara dos Deputados do Brasil, assim
+como o Senado Federal, faz parte do Poder Legislativo da União. São 513
+deputados, que através do voto proporcional, são eleitos e exercem seus cargos
+por quatro anos. A Câmara dos deputados também é conhecida como "Câmara baixa"
+ou  "câmara da plebe" em contraposição a "câmara dos lordes" (Câmara alta ou
+senado).
+
+          *<h6>*Texto retirado da
+          <a href="http://pt.wikipedia.org/wiki/Câmara_dos_Deputados_do_Brasil">Wikipedia</a>.</h6></small></p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 thumb-main">
+                <img src="http://www.topsegurovida.com.br/files/2012/05/1266497002cmaradosdeputadosfotorodolfostuckert.jpg" class="img-responsive">
+            </div>
+            <div class="col-md-3 thumbs">
+                <img src="http://www.grupoimpactoweb.com.br/wp-content/uploads/2012/09/camara_deputados.jpg" class="img-responsive">
+                <img src="https://farm8.staticflickr.com/7360/9561988415_60da20bd18_b.jpg" class="img-responsive">
+            </div>
+            <div class="col-md-3 thumbs">
+                <img src="https://farm3.staticflickr.com/2874/9675437792_7d82e0c3f4_b.jpg" class="img-responsive">
+                <img src="https://farm6.staticflickr.com/5505/9460224584_a4f729c361_b.jpg" class="img-responsive">
+            </div>
+
+        </div>
+      </div>
+
+      <div class="hxm col-md-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">Homens x Mulheres</h4>
+            <p class="list-group-item-text">Para cada 12 homens a casa possui
+              apenas 1 mulher. No total são {{ homens }} homens e apenas {{ mulheres }}
+              mulheres.</p>
+          </a>
+          <a href="#" class="list-group-item">
+            <!-- Homens x Mulheres Char -->
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" style="width: {{ homens|as_percentage_of:deputados.count }}">
+                {{ homens|as_percentage_of:deputados.count }} Homens ( {{ homens }})
+              </div>
+              <div class="progress-bar progress-bar-danger" style="width: {{ mulheres|as_percentage_of:deputados.count }}">
+                {{ mulheres|as_percentage_of:deputados.count }} Mulheres ( {{ mulheres }} )
+              </div>
+            </div>
+            {% for i in "x"|rjust:"7" %}
+              <i class="fa fa-female fa-fw fa-2x" style="color:#FF66FF"></i>
+            {% endfor %}
+            {% for i in "x"|rjust:"92" %}
+              <i class="fa fa-male fa-fw fa-2x" style="color:#3399FF"></i>
+            {% endfor %}
+          </a>
+        </div>
+      </div>
+    </div> <!-- .deputados-header -->
+
+    <div class="row">
+
+
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#orgaos" data-toggle="tab">Orgãos da Câmara <span class="label label-info">{{ orgaos.count }}</span></a></li>
+        <li><a href="#proposicoes" data-toggle="tab">Proposições <span class="label label-info">{{ proposicoes.count }}</span></a></li>
+        <li><a href="#deputados" data-toggle="tab">Deputados <span class="label label-info">{{ deputados.count }}</span></a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="orgaos">{% include "camara/orgaos/index.phtml" %}</div>
+        <div class="tab-pane fade" id="proposicoes">{% include "camara/proposicoes/index.phtml" %}</div>
+        <div class="tab-pane fade" id="deputados">{% include "camara/deputados/index.phtml" %}</div>
+      </div>
+
+    </div> <!-- .row -->
+
+  </div> <!-- .content -->
+
+{% endblock %}
+
+

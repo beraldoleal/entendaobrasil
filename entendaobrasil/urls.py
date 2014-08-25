@@ -8,12 +8,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'entendaobrasil.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^parlamentares/deputados', views.deputados, name='deputados'),
-    url(r'^parlamentares/deputado/(?P<id>[0-9]+)', views.deputado, name='deputado'),
-    url(r'^parlamentares/senador/(?P<id>[0-9]+)', views.senador, name='senador'),
-    url(r'^parlamentares/senadores', views.senadores, name='senadores'),
-    url(r'^parlamentares', views.parlamentares, name='parlamentares'),
-    url(r'^partidos/', views.partidos, name='partidos'),
+    url(r'^camara/deputado/(?P<id>[0-9]+)', views.deputado, name='deputado'),
+    url(r'^camara/orgao/(?P<sigla>\w+)', views.orgao, name='orgao'),
+    url(r'^camara/proposicao/(?P<id>[0-9]+)', views.proposicao, name='proposicao'),
+    url(r'^camara', views.camara, name='camara'),
 
     #url(r'^admin/', include(admin.site.urls)),
 )

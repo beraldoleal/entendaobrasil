@@ -1,0 +1,76 @@
+{% load core_extras %}
+      <div class="col-md-2" id="side-nav">
+        <ul class="nav nav-stacked" id="sidebar">
+          {% for p in partidos %}
+            {% if p.deputados %}
+              <li><a href="#sec-{{ p.sigla }}">{{ p.sigla }}
+              <div class="pull-right">{{ p.deputados.count }}</div></a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="col-md-10">
+        {% for p in partidos %}
+          {% if p.deputados %}
+            <h3 id="sec-{{ p.sigla }}">{{ p.sigla }} - {{ p.nome }}</h3>
+            <div class="row">
+              {% for d in p.deputados %}
+                <div class="col-sm-3 col-md-2">
+                  <div class="thumbnail" style="min-height:320px;">
+                    <img src="{{ d.foto_principal }}" alt="...">
+                    <div class="caption">
+                      <p><strong><a href="{% url "deputado" d.ide_cadastro %}">{{ d.nome_parlamentar|title }}</a></strong></p>
+                      <p>{{ d.partido.sigla }} - {{ d.uf }}</p>
+          <small><span class="fa fa-envelope fa-fw"></span> Proposições</small>
+          <small><span class="pull-right"><a href="mailto:{{ deputado.email }}">{{ d.proposicao_set.count }}</a></span></small>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+{% block javascript %}
+       <script type='text/javascript'>
+        
+        $(document).ready(function() {
+        
+            /* activate sidebar */
+$('#sidebar').affix({
+  offset: {
+    top: 500
+  }
+});
+
+/* activate scrollspy menu */
+var $body   = $(document.body);
+var navHeight = $('.navbar').outerHeight(true) + 1;
+
+$body.scrollspy({
+target: '#side-nav',
+offset: navHeight
+});
+
+/* smooth scrolling sections */
+$('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+&& location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 70
+        }, 1000);
+        return false;
+      }
+    }
+});
+        
+        });
+        
+        </script>
+{% endblock %}
