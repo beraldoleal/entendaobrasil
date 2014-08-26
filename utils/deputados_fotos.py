@@ -15,7 +15,7 @@ log_level = logging.DEBUG
 logging.basicConfig(level=log_level)
 logger = logging.getLogger('import-tool')
 
-destination = "core/static/photos/deputados"
+destination = "media/photos/deputados"
 
 #if not os.path.isfile(destination):
 #    urllib.urlretrieve(url_foto, destination)

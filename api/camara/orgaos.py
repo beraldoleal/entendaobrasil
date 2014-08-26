@@ -108,7 +108,6 @@ class OrgaosCamara(CamaraAPI):
         result = self.executar_metodo("ListarCargosOrgaosLegislativosCD")
 
         for item in self.as_list(result.cargosOrgaos.cargo):
-
             # Consulta se o objeto já existe e a flag "atualizado" está ativa
             existe = Cargo.objects.filter(id=int(item._id)).first()
             if existe and existe.atualizado:

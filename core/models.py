@@ -99,13 +99,11 @@ class Parlamentar(Base):
     def deputados(self):
         return Parlamentar.objects.filter(tipo='D').order_by('nome')
 
-
     def foto_principal(self):
         return self.fotos_perfil()[0]
 
     def flag_uf(self):
         return "%sflags/uf/%s.png" % (settings.STATIC_URL, self.uf)
-
 
     def fotos_perfil(self):
         path = "%s/photos/deputados/%s/" % (settings.STATIC_ROOT, self.ide_cadastro)
@@ -115,16 +113,13 @@ class Parlamentar(Base):
         except StopIteration:
             return []
 
-
     def idade(self):
         now = datetime.utcnow()
         diff = now.date() - self.data_nascimento
         return diff.days / 365
 
-
     def exercicios(self):
         return self.exercicio_set.all().order_by('-data_inicio')
-
 
     def comissoes_atuais(self):
         now = datetime.now()
@@ -133,8 +128,6 @@ class Parlamentar(Base):
     def comissoes_passadas(self):
         now = datetime.now()
         return self.cargoorgao_set.filter(data_saida__isnull=False).order_by('-data_entrada')
-
-
 
     def tratamento(self):
         if self.tipo == 'D':
