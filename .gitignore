@@ -3,3 +3,4 @@ core/static/photos/
 *.pyc
 static/css/*
 static/flags/*
+media/photos/*
