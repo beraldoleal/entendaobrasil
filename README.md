@@ -44,6 +44,11 @@ módulo wsgi.
    # a2ensite entendaobrasil.org
    # service apache2 reload
 
+Copie os arquivos estáticos:
+
+   $ python manage.py collectstatic
+
+
 Importação Inicial
 ------------------
 
