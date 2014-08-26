@@ -101,8 +101,7 @@ class Parlamentar(Base):
 
 
     def foto_principal(self):
-        return "%sphotos/deputados/%s.jpg" % (settings.STATIC_URL, self.ide_cadastro)
-
+        return self.fotos_perfil()[0]
 
     def flag_uf(self):
         return "%sflags/uf/%s.png" % (settings.STATIC_URL, self.uf)
