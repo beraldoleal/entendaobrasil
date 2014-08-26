@@ -2,10 +2,8 @@ from django.db import models
 from datetime import datetime
 import os
 
-settings = os.environ['DJANGO_SETTINGS_MODULE']
-
 # TODO: Replace this to a more pythonic way.
-if settings is "entendaobrasil.production":
+if os.environ['DJANGO_SETTINGS_MODULE'] == "entendaobrasil.production":
     from entendaobrasil import production as settings
 else:
     from entendaobrasil import settings
