@@ -121,6 +121,7 @@ class Parlamentar(Base):
             w = wikipedia.page(query)
             self.wikipedia = w.url
             self.sumario = w.summary
+            self.save()
         except wikipedia.exceptions.PageError:
             logger.error("%s not found on wikipedia" % query)
             pass
