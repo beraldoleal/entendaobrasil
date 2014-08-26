@@ -9,7 +9,7 @@ federal) utilizando as APIs das respectivas casas. O portal pretende possuir
 textos e vídeos explicativos sobre a política no Brasil.
 
 O arquivo de configuração padrão irá iniciar o banco de dados em
-'/tmp/db.sqlite3'. Por favor, mude o arquivo 'entendaobrasil/settings.py' para
+`/tmp/db.sqlite3`. Por favor, mude o arquivo `entendaobrasil/settings.py` para
 alterar as configuração de banco de dados.
 
 
@@ -30,7 +30,7 @@ Importação Inicial
     $ python scripts/import.py
     $ python utils/deputados_fotos.py
 
-Para maiores detalhes veja o arquivo 'IMPORTACAO.md'.
+Para maiores detalhes veja o arquivo `IMPORTACAO.md`.
 
 Executando
 ----------
