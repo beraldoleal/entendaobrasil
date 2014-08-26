@@ -86,7 +86,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
@@ -96,9 +95,9 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-### Configurações personalizadas ###
+### Custom settings ###
 
-# Nivel de verbosidade durante a importacao dos dados
+# Verbosity level when running import script
 CAMARA_API_LOG_LEVEL = logging.INFO
 
 # Congressman photos dir
