@@ -16,16 +16,39 @@ alterar as configuração de banco de dados.
 Instalação
 ----------
 
-    $ mkdir /usr/src/entendaobrasil/
-    $ cd /usr/src/entendaobrasil/
-    $ git clone git@github.com:beraldoleal/entendaobrasil.git .
+Esta instalação é aconselhável para ambientes de produção (MySQL + Apache).
+Para configurar um ambiente de desenvolvimento, por favor, veja o arquivo
+`HACKING.md`.
+
+    $ sudo mkdir /var/www/entendaobrasil
+    $ sudo git clone git@github.com:beraldoleal/entendaobrasil.git /var/www/entendaobrasil/
+    $ sudo chown -R www-data. /var/www/entendaobrasil/
     $ sudo pip install requirements.txt
+
+Configuração
+------------
+
+O arquivo settings padrão utiliza sqlite armazenado no diretório `/tmp/`. Para
+utilizar MySQL e configurar opções de produção, copie o arquivo settings:
+
+    $ cd /var/www/entendaobrasil/entendaobrasil/
+    $ cp settings.py production.py
+
+Configure o `production.py` de acordo com suas necessidades.
+
+Para configurar o apache, você precisa ter o apache instalado com suporte ao
+módulo wsgi.
+
+   $ cd /etc/apache2/sites-available/
+   $ sudo cp /var/www/entendaobrasil/entendaobrasil/apache.conf entendaobrasil.org.conf
+   # a2ensite entendaobrasil.org
+   # service apache2 reload
 
 Importação Inicial
 ------------------
 
     $ export PYTHONPATH=dir:$PYTHONPATH
-    $ export DJANGO_SETTINGS_MODULE=entendaobrasil.settings
+    $ export DJANGO_SETTINGS_MODULE=entendaobrasil.production
     $ python manage.py syncdb
     $ python scripts/import.py
     $ python utils/deputados_fotos.py
@@ -36,3 +59,4 @@ Executando
 ----------
 
     $ python manage.py runserver
+
