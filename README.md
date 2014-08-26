@@ -19,7 +19,7 @@ Instalação
     $ mkdir /usr/src/entendaobrasil/
     $ cd /usr/src/entendaobrasil/
     $ git clone git@github.com:beraldoleal/entendaobrasil.git .
-    $ pip install requirements.txt
+    $ sudo pip install requirements.txt
 
 Importação Inicial
 ------------------
