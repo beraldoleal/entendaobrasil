@@ -128,7 +128,7 @@ class DeputadosCamara(CamaraAPI):
             orgao_sigla = self.as_text_without_spaces(comissao.siglaComissao)
             orgao_nome = u"%s" % self.as_text(comissao.nomeComissao)
 
-            logger.info(u"Importando Orgao ID: %d, %s" % (orgao_id, orgao_sigla))
+            logger.info(u"Adicionando parlamentar ao Orgao ID: %d, %s" % (orgao_id, orgao_sigla))
 
             tipo = TipoOrgao.objects.get(id=110) # Comissao da Camara dos Deputados
 
