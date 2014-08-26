@@ -120,7 +120,7 @@ class Parlamentar(Base):
             wikipedia.set_lang("pt")
             w = wikipedia.page(query)
             self.wikipedia = w.url
-            self.sumario = w.summary
+            self.sumario = w.summary[:4090]
             self.save()
         except wikipedia.exceptions.PageError:
             logger.error("%s not found on wikipedia" % query)
