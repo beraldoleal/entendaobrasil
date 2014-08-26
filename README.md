@@ -8,10 +8,12 @@ Inicialmente com foque nas casas parlamentares (Câmara dos Deputados e Senado
 federal) utilizando as APIs das respectivas casas. O portal pretende possuir
 textos e vídeos explicativos sobre a política no Brasil.
 
+Este sistema também se utiliza de Mashup_(web_application hybrid), para obter
+dados da Wikipedia e fotos do Google Images.
+
 O arquivo de configuração padrão irá iniciar o banco de dados em
 `/tmp/db.sqlite3`. Por favor, mude o arquivo `entendaobrasil/settings.py` para
 alterar as configuração de banco de dados.
-
 
 Instalação
 ----------
