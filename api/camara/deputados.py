@@ -24,7 +24,6 @@ class DeputadosCamara(CamaraAPI):
         self.wsdl_url = "http://www.camara.gov.br/SitCamaraWS/Deputados.asmx?wsdl"
         return super(DeputadosCamara, self).__init__()
 
-
     def importar_partidos(self):
         """
         Obtém os partidos com representação na Câmara dos Deputados.
@@ -57,7 +56,6 @@ class DeputadosCamara(CamaraAPI):
             novo.save()
             logger.info(u"%s importado com sucesso (%s)." %
                         (novo._meta.object_name, novo))
-
 
     def importar_deputados(self):
         """
@@ -194,8 +192,6 @@ class DeputadosCamara(CamaraAPI):
             cargo_orgao.save()
 
         logger.info(u"Detalhes sobre as comissões do Parlamentar atualizado. (%s)" % parlamentar)
-
-        
 
     def importar_detalhes_deputados(self):
         legislaturas = [53,54]
