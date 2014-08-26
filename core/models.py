@@ -113,10 +113,10 @@ class Parlamentar(Base):
         return "%sflags/uf/%s.png" % (settings.STATIC_URL, self.uf)
 
     def fotos_perfil(self):
-        path = "%s/photos/deputados/%s/" % (settings.STATIC_ROOT, self.ide_cadastro)
+        path = "%s/photos/deputados/%s/" % (settings.MEDIA_ROOT, self.ide_cadastro)
         try:
             photos = os.walk(path).next()[2]
-            return map(lambda x: '%sphotos/deputados/%s/%s' % (settings.STATIC_URL, self.ide_cadastro, x), photos)
+            return map(lambda x: '%sphotos/deputados/%s/%s' % (settings.MEDIA_URL, self.ide_cadastro, x), photos)
         except StopIteration:
             return []
 
