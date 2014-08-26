@@ -30,7 +30,7 @@ Importação Inicial
     $ python scripts/import.py
     $ python utils/deputados_fotos.py
 
-Para maiores detalhes veja o arquivo `IMPORTACAO.md`.
+Para mais detalhes veja o arquivo `IMPORTACAO.md`.
 
 Executando
 ----------
