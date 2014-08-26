@@ -10,7 +10,7 @@ class Base(models.Model):
         abstract = True
 
     atualizado = models.BooleanField(default=True)
-    criado_em = models.DateTimeField(auto_now_add=True)
+    criado_em = models.DateTimeField(auto_now=True)
     atualizado_em = models.DateTimeField(auto_now=True)
 
 
@@ -76,7 +76,7 @@ class Parlamentar(Base):
     sumario = models.CharField(max_length=4096, blank=True, null=True)
     sexo = models.CharField(max_length=1, choices=SEXOS, blank=True, null=True)
     uf = models.CharField(max_length=2)
-    profissao = models.CharField(max_length=128)
+    profissao = models.CharField(max_length=1024)
     partido = models.ForeignKey(Partido)
     gabinete = models.IntegerField(blank=True, null=True)
     endereco = models.CharField(max_length=512, blank=True, null=True)
