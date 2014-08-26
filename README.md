@@ -41,14 +41,14 @@ Configure o `production.py` de acordo com suas necessidades.
 Para configurar o apache, você precisa ter o apache instalado com suporte ao
 módulo wsgi.
 
-   $ cd /etc/apache2/sites-available/
-   $ sudo cp /var/www/entendaobrasil/entendaobrasil/apache.conf entendaobrasil.org.conf
-   # a2ensite entendaobrasil.org
-   # service apache2 reload
+    $ cd /etc/apache2/sites-available/
+    $ sudo cp /var/www/entendaobrasil/entendaobrasil/apache.conf entendaobrasil.org.conf
+    # a2ensite entendaobrasil.org
+    # service apache2 reload
 
 Copie os arquivos estáticos:
 
-   $ python manage.py collectstatic
+    $ python manage.py collectstatic
 
 
 Importação Inicial
