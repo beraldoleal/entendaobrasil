@@ -91,10 +91,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = '/tmp/entendaobrasil/static' # for development
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ### Configurações personalizadas ###
 
 # Nivel de verbosidade durante a importacao dos dados
 CAMARA_API_LOG_LEVEL = logging.INFO
+
+# Congressman photos dir
+PHOTOS_DIR = "%s/photos/deputados" % MEDIA_ROOT
