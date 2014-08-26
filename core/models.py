@@ -105,7 +105,11 @@ class Parlamentar(Base):
         return Parlamentar.objects.filter(tipo='D').order_by('nome')
 
     def foto_principal(self):
-        return self.fotos_perfil()[0]
+        fotos = self.fotos_perfil()
+        if fotos:
+            return fotos[0]
+        else:
+            return None
 
     def flag_uf(self):
         return "%sflags/uf/%s.png" % (settings.STATIC_URL, self.uf)
