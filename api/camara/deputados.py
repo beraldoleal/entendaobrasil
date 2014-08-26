@@ -147,7 +147,7 @@ class DeputadosCamara(CamaraAPI):
 
 
             # Cria objeto em CargoOrgao (Cargo exercido em determinado Orgao)
-            cargo_id = 63 if condicao == "Titular" else 64
+            cargo_id = 1001 if condicao == "Titular" else 1002
             cargo_base = Cargo.objects.get(id=cargo_id)
 
             cargo_orgao, _ = CargoOrgao.objects.get_or_create(orgao = orgao,
