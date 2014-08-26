@@ -123,8 +123,8 @@ class OrgaosCamara(CamaraAPI):
             logger.info(u"%s importado com sucesso (%s)." %
                         (novo._meta.object_name, novo))
 
-        cargo = Cargo(descricao = 'Membro Titular')
+        cargo = Cargo(id=1001, descricao = 'Membro Titular')
         cargo.save()
     
-        cargo = Cargo(descricao = 'Membro Suplente')
+        cargo = Cargo(id=1002, descricao = 'Membro Suplente')
         cargo.save()
