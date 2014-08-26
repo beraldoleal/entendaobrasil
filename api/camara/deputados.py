@@ -206,7 +206,3 @@ class DeputadosCamara(CamaraAPI):
                                     (parlamentar, legislatura))
                        continue
                    break
-
-    def importar_photos(self):
-        for parlamentar in Parlamentar.objects.all():
-            parlamentar.download_photos()

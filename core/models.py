@@ -5,7 +5,8 @@ import os
 import time
 import urllib
 import logging
-
+import wikipedia
+import requests
 
 # TODO: Replace this to a more pythonic way.
 if os.environ['DJANGO_SETTINGS_MODULE'] == "entendaobrasil.production":
@@ -109,6 +110,27 @@ class Parlamentar(Base):
     @classmethod
     def deputados(self):
         return Parlamentar.objects.filter(tipo='D').order_by('nome')
+
+    def get_wikipedia_data(self):
+        logging.basicConfig(level=settings.CAMARA_API_LOG_LEVEL)
+        logger = logging.getLogger('entendaobrasil.wikipedia')
+        query = "%s %s" % (self.tratamento(), self.nome_parlamentar)
+        logger.info("Searching wikipedia for %s..." % query)
+        try:
+            wikipedia.set_lang("pt")
+            w = wikipedia.page(query)
+            self.wikipedia = w.url
+            self.sumario = w.summary
+        except wikipedia.exceptions.PageError:
+            logger.error("%s not found on wikipedia" % query)
+            pass
+        except wikipedia.exceptions.DisambiguationError:
+            logger.error("%s is ambiguous" % query)
+            pass
+        except requests.exceptions.ConnectionError:
+            logger.error("Failed to connect to wikiepedia")
+            pass
+
 
     def download_photos(self):
         logging.basicConfig(level=settings.CAMARA_API_LOG_LEVEL)
