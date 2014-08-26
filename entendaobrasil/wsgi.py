@@ -13,7 +13,7 @@ import sys
 path = '/var/www/entendaobrasil'
 sys.path.insert(0, path)
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "entendaobrasil.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "entendaobrasil.production")
 os.environ.setdefault("PYTHON_EGG_CACHE", "/tmp/")
 
 from django.core.wsgi import get_wsgi_application
