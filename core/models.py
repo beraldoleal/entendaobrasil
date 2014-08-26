@@ -147,7 +147,12 @@ class Parlamentar(Base):
             logger.info("Already downloaded, skipping %s" % query)
             return
 
-        results = search.images(query.encode("UTF-8"), 5)
+        try:
+            results = search.images(query.encode("UTF-8"), 5)
+        except TypeError:
+            logger.error("Skipping %s, type error" % query)
+            return
+
         i=1
         for result in results:
             f = "%s/%d.jpg" % (dest_dir, i)
