@@ -46,6 +46,10 @@ módulo wsgi.
     # a2ensite entendaobrasil.org
     # service apache2 reload
 
+Inicie o banco de dados:
+
+    $ python manage.py syncdb
+
 Copie os arquivos estáticos:
 
     $ python manage.py collectstatic

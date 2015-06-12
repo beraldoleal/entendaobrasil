@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from googleapi import search
+#from googleapi import search
 import os
 import time
 import urllib
@@ -133,41 +133,42 @@ class Parlamentar(Base):
             pass
 
 
-    def download_photos(self):
-        logging.basicConfig(level=settings.CAMARA_API_LOG_LEVEL)
-        logger = logging.getLogger('entendaobrasil.download_photo')
-
-        query = "%s %s" % (self.tratamento(), self.nome_parlamentar)
-        logger.info("Searching for %s" % query)
-        dest_dir = "%s/%s" % (settings.PHOTOS_DIR, self.ide_cadastro)
-        if not os.path.exists(dest_dir):
-            os.mkdir(dest_dir)
-
-        if len(self.fotos_perfil()) == 5:
-            logger.info("Already downloaded, skipping %s" % query)
-            return
-
-        try:
-            results = search.images(query.encode("UTF-8"), 5)
-        except TypeError:
-            logger.error("Skipping %s, type error" % query)
-            return
-
-        i=1
-        for result in results:
-            f = "%s/%d.jpg" % (dest_dir, i)
-            logger.info("Photo %s..." % f)
-            try:
-                if not os.path.isfile(f):
-                    opener = urllib.urlopen(result['image_url'])
-                    if opener.headers.maintype == 'image':
-                        open(f, 'wb').write(opener.read())
-            except UnicodeEncodeError:
-                logger.error("Skipping %s, url with wrong enconde" % query)
-            except IOError:
-                logger.error("Skipping %s, timeout" % query)
-                time.sleep(5)
-            i=i+1
+#TODO: Fix googleapi
+#    def download_photos(self):
+#        logging.basicConfig(level=settings.CAMARA_API_LOG_LEVEL)
+#        logger = logging.getLogger('entendaobrasil.download_photo')
+#
+#        query = "%s %s" % (self.tratamento(), self.nome_parlamentar)
+#        logger.info("Searching for %s" % query)
+#        dest_dir = "%s/%s" % (settings.PHOTOS_DIR, self.ide_cadastro)
+#        if not os.path.exists(dest_dir):
+#            os.mkdir(dest_dir)
+#
+#        if len(self.fotos_perfil()) == 5:
+#            logger.info("Already downloaded, skipping %s" % query)
+#            return
+#
+#        try:
+#            results = search.images(query.encode("UTF-8"), 5)
+#        except TypeError:
+#            logger.error("Skipping %s, type error" % query)
+#            return
+#
+#        i=1
+#        for result in results:
+#            f = "%s/%d.jpg" % (dest_dir, i)
+#            logger.info("Photo %s..." % f)
+#            try:
+#                if not os.path.isfile(f):
+#                    opener = urllib.urlopen(result['image_url'])
+#                    if opener.headers.maintype == 'image':
+#                        open(f, 'wb').write(opener.read())
+#            except UnicodeEncodeError:
+#                logger.error("Skipping %s, url with wrong enconde" % query)
+#            except IOError:
+#                logger.error("Skipping %s, timeout" % query)
+#                time.sleep(5)
+#            i=i+1
 
     def foto_principal(self):
         fotos = self.fotos_perfil()
