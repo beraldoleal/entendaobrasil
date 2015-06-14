@@ -5,5 +5,7 @@ static/css/*
 static/flags/*
 media/photos/*
 
+*.swp
+
 site/tse/2014/data/*.json
 site/tse/2014/data/candidato/*.json
