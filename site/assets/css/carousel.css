@@ -20,6 +20,15 @@ body {
   z-index: 20;
 }
 
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
     color: #FFF;
     background-color: #009b3a;
@@ -31,6 +40,16 @@ body {
 
 .navbar-inverse .navbar-brand {
     color: #009b3a;
+}
+
+.pagination > li > a {
+    color: #009b3a;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    color: #FFF;
+    background-color: #009b3a;
+    border-color: #009b3a;
 }
 
 /* Flip around the padding for proper display in narrow viewports */
@@ -238,6 +257,12 @@ a {
 
 .site-footer {
     text-align: center;
-    background: none repeat scroll 0% 0% #ebebeb;
-    padding: 50px 50px 50px 50px;
+    background: none repeat scroll 0% 0% #f5f5f5;
+
+  position: relative;
+  margin-top: -100px; /* negative value of footer height */
+  height: 100px;
+  clear: both;
+  padding-top: 20px;
+
 }

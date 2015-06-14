@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Eleições 2014 - Relatório de Doações - Deputados Federais</title>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="/tse/2014/assets/css/carousel.css" rel="stylesheet">
+
+  </head>
+
+<style>
+ 
+.node rect {
+  cursor: move;
+  fill-opacity: .5; 
+  stroke-opacity: .5; 
+  shape-rendering: crispEdges;
+}
+ 
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+ 
+.link {
+  fill: none;
+  stroke: green;
+  stroke-opacity: .2; 
+}
+ 
+.link:hover {
+  stroke-opacity: .5; 
+}
+ 
+</style>
+
+
+<!-- NAVBAR
+================================================== -->
+  <body>
+  <div class="wrap">
+  <div id="main" class="container clear-top">
+    <div class="navbar-wrapper">
+
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Entenda o Brasil</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav" id="navigation">
+                <li class="active"><a href="/tse/2014">Doações 2014</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container">
+
+    <hr class="featurette-divider">
+
+    <div class="row">
+      <div class="col-md-8">
+
+        <div id="chart"></div>
+        <script src="http://d3js.org/d3.v3.js"></script>
+        <script src="/tse/2014/assets/js/sankey.js"></script>
+<script>
+  
+var units = "Reais";
+ 
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+    width = $("#chart").parent().width() - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+ 
+var formatNumber = d3.format(",.0f"),    // zero decimal places
+    format = function(d) { return "R$ " + formatNumber(d) + " " + units; },
+    color = d3.scale.category20();
+ 
+// append the svg canvas to the page
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+ 
+// Set the sankey diagram properties
+var sankey = d3.sankey()
+    .nodeWidth(20)
+    .nodePadding(10)
+    .size([width, height]);
+ 
+var path = sankey.link();
+ 
+// load the data
+d3.json("/tse/2014/data/test.json", function(error, graph) {
+    console.log(graph);
+ 
+    var nodeMap = {};
+
+    graph.nodes.forEach(function(x) {
+      nodeMap[x.name] = x;
+    });
+
+    graph.links = graph.links.map(function(x) {
+      return {
+        source: nodeMap[x.source],
+        target: nodeMap[x.target],
+        value: x.value
+      };
+    });
+ 
+  sankey
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .layout(32);
+ 
+// add in the links
+  var link = svg.append("g").selectAll(".link")
+      .data(graph.links)
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", path)
+      .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+      .sort(function(a, b) { return b.dy - a.dy; });
+ 
+// add the link titles
+  link.append("title")
+        .text(function(d) {
+        return d.source.name + " → " + 
+                d.target.name + "\n" + format(d.value); });
+
+// add in the nodes
+  var node = svg.append("g").selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { 
+      return "translate(" + d.x + "," + d.y + ")"; })
+    .call(d3.behavior.drag()
+      .origin(function(d) { return d; })
+      .on("dragstart", function() { 
+      this.parentNode.appendChild(this); })
+      .on("drag", dragmove));
+ 
+// add the rectangles for the nodes
+  node.append("rect")
+      .attr("height", function(d) { return d.dy; })
+      .attr("width", sankey.nodeWidth())
+      .style("fill", function(d) { 
+      return d.color = "#FEDF00"; }) //color(d.name.replace(/ .*/, "")); })
+    .append("title")
+      .text(function(d) { 
+      return d.name + "\n" + format(d.value); });
+ 
+// add in the title for the nodes
+  node.append("text")
+      .attr("x", -40)
+      .attr("y", function(d) { return d.dy / 2; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", "end")
+      .attr("transform", null)
+      .text(function(d) { return d.name.replace(/ .*/, " ..."); })
+    .filter(function(d) { return d.x < width / 2; })
+      .attr("x", 6 + sankey.nodeWidth())
+      .attr("text-anchor", "start");
+ 
+// the function for moving the nodes
+  function dragmove(d) {
+    d3.select(this).attr("transform", 
+        "translate(" + (
+             d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))
+          ) + "," + (
+                   d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
+            ) + ")");
+    sankey.relayout();
+    link.attr("d", path);
+  }
+});
+ 
+</script>
+      </div>
+
+    <div class="col-md-4">
+
+      <table class="table table-condensed top-buffer">
+        <img src="http://www.encontrenaweb.com.br/wp-content/uploads/2014/10/tiririca.jpg" class="img-responsive">
+        <tr>
+          <td><span class="fa fa-user fa-fw"></span><small> Candidato: <span class="pull-right" id="nome"></span></small></td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-group fa-fw"></span><small> Partido: <span class="pull-right" id="partido"></span></small></td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-flag fa-fw"></span><small> UF: <span class="pull-right" id="unidade"></span></small></td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-money fa-fw"></span><small> Total: <strong><span class="pull-right" id="total"></span></strong></small></td>
+        </tr>
+      </table>
+
+    </div>
+    </div>
+
+    <h2><small>Confira abaixo os detalhes das transações:</small></h2>
+    <div class="row">
+      <div class="col-md-12">
+        <table id="details" class="table table-condensed" width="100%" cellspacing="0">
+        </table>
+      </div>
+    </div>
+
+    </div>
+   </div> <!--./main -->
+   </div> <!--./wrap -->
+
+      <!-- FOOTER -->
+      <div id="footer" class="site-footer">
+<p><small>Todos os dados exibidos neste site, são obtidos dos devidos órgãos públicos competentes por meio da Lei de Acesso à informação.<br>
+ O conteúdo original, quando não informado, está disponível sobre a licença
+<a href="http://creativecommons.org/licenses/by/3.0/deed.pt_BR">Creative Commons Attribution 3.0</a></small>
+<a href="http://creativecommons.org/licenses/by/3.0/deed.pt_BR">
+<img src="http://i.creativecommons.org/l/by/3.0/80x15.png" width="80" height="15" alt="Creative Commons BY 3.0" pagespeed_url_hash="3352115067"></a></p>
+      </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+
+    <script>
+    function atualizar_resumo(resumo) {
+      console.log(resumo);
+      $("#nome").html(resumo['nome']);
+      $("#partido").html(resumo['partido']);
+      $("#unidade").html(resumo['uf']);
+      $("#total").html(moeda(resumo['total']));
+    }
+    function moeda(valor) {
+      return "R$ " + valor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&\,');
+    }
+    </script>
+
+    <script>
+      $(document).ready(function() {
+
+        var href = $(this)['context']['URL'];
+        if (href.substr(-1) == '/') {
+          href = href.substr(0, href.length - 1);
+        }
+
+        var sequencia = href.substr(href.lastIndexOf('/') + 1);
+
+        var table = $('#details').DataTable({
+            "ajax": "/tse/2014/data/candidato/"+sequencia+".json",
+            "language": {
+                "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
+            },
+            "aoColumns": [
+              { "sTitle": "Doador",     "mData": "doador", }, 
+              { "sTitle": "CPF/CNPJ",   "mData": "cpf_cnpj" },
+              { "sTitle": "Data",       "mData": "data" },
+              { "sTitle": "Recibo",     "mData": "recibo_eleitoral" },
+              { "sTitle": "Documento",  "mData": "documento" },
+              { "sTitle": "Valor",      "mData": "valor" }
+            ],
+            "aoColumnDefs": [{
+                "targets": 5,
+                "render": function ( data, type, row ) {
+                    return moeda(data);
+                }}
+            ]
+        });
+
+        table.on('init.dt', function(e, settings, json) {
+          atualizar_resumo(json['dados']);
+        });
+      });
+    </script>
+  </body>
+</html>
