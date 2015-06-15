@@ -31,29 +31,10 @@
   </head>
 
 <style>
- 
-.node rect {
-  cursor: move;
-  fill-opacity: .5; 
-  stroke-opacity: .5; 
-  shape-rendering: crispEdges;
-}
- 
-.node text {
-  pointer-events: none;
-  text-shadow: 0 1px 0 #fff;
-}
- 
-.link {
-  fill: none;
-  stroke: green;
-  stroke-opacity: .2; 
-}
- 
-.link:hover {
-  stroke-opacity: .5; 
-}
- 
+
+.arc path {
+  stroke: #fff;
+} 
 </style>
 
 
@@ -96,130 +77,16 @@
     <div class="row">
       <div class="col-md-8">
 
-        <div id="chart"></div>
-        <script src="http://d3js.org/d3.v3.js"></script>
-        <script src="/tse/2014/assets/js/sankey.js"></script>
-<script>
-  
-var units = "Reais";
- 
-var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = $("#chart").parent().width() - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
- 
-var formatNumber = d3.format(",.0f"),    // zero decimal places
-    format = function(d) { return "R$ " + formatNumber(d) + " " + units; },
-    color = d3.scale.category20();
- 
-// append the svg canvas to the page
-var svg = d3.select("#chart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", 
-          "translate(" + margin.left + "," + margin.top + ")");
- 
-// Set the sankey diagram properties
-var sankey = d3.sankey()
-    .nodeWidth(20)
-    .nodePadding(10)
-    .size([width, height]);
- 
-var path = sankey.link();
- 
-// load the data
-d3.json("/tse/2014/data/test.json", function(error, graph) {
-    console.log(graph);
- 
-    var nodeMap = {};
+        <table id="details" class="table table-condensed" width="100%" cellspacing="0">
+        </table>
 
-    graph.nodes.forEach(function(x) {
-      nodeMap[x.name] = x;
-    });
 
-    graph.links = graph.links.map(function(x) {
-      return {
-        source: nodeMap[x.source],
-        target: nodeMap[x.target],
-        value: x.value
-      };
-    });
- 
-  sankey
-      .nodes(graph.nodes)
-      .links(graph.links)
-      .layout(32);
- 
-// add in the links
-  var link = svg.append("g").selectAll(".link")
-      .data(graph.links)
-    .enter().append("path")
-      .attr("class", "link")
-      .attr("d", path)
-      .style("stroke-width", function(d) { return Math.max(1, d.dy); })
-      .sort(function(a, b) { return b.dy - a.dy; });
- 
-// add the link titles
-  link.append("title")
-        .text(function(d) {
-        return d.source.name + " → " + 
-                d.target.name + "\n" + format(d.value); });
-
-// add in the nodes
-  var node = svg.append("g").selectAll(".node")
-      .data(graph.nodes)
-    .enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { 
-      return "translate(" + d.x + "," + d.y + ")"; })
-    .call(d3.behavior.drag()
-      .origin(function(d) { return d; })
-      .on("dragstart", function() { 
-      this.parentNode.appendChild(this); })
-      .on("drag", dragmove));
- 
-// add the rectangles for the nodes
-  node.append("rect")
-      .attr("height", function(d) { return d.dy; })
-      .attr("width", sankey.nodeWidth())
-      .style("fill", function(d) { 
-      return d.color = "#FEDF00"; }) //color(d.name.replace(/ .*/, "")); })
-    .append("title")
-      .text(function(d) { 
-      return d.name + "\n" + format(d.value); });
- 
-// add in the title for the nodes
-  node.append("text")
-      .attr("x", -40)
-      .attr("y", function(d) { return d.dy / 2; })
-      .attr("dy", ".35em")
-      .attr("text-anchor", "end")
-      .attr("transform", null)
-      .text(function(d) { return d.name.replace(/ .*/, " ..."); })
-    .filter(function(d) { return d.x < width / 2; })
-      .attr("x", 6 + sankey.nodeWidth())
-      .attr("text-anchor", "start");
- 
-// the function for moving the nodes
-  function dragmove(d) {
-    d3.select(this).attr("transform", 
-        "translate(" + (
-             d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))
-          ) + "," + (
-                   d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
-            ) + ")");
-    sankey.relayout();
-    link.attr("d", path);
-  }
-});
- 
-</script>
       </div>
 
     <div class="col-md-4">
 
       <table class="table table-condensed top-buffer">
-        <img src="http://www.encontrenaweb.com.br/wp-content/uploads/2014/10/tiririca.jpg" class="img-responsive">
+        <img id="photo" src="" class="img-responsive">
         <tr>
           <td><span class="fa fa-user fa-fw"></span><small> Candidato: <span class="pull-right" id="nome"></span></small></td>
         </tr>
@@ -232,20 +99,46 @@ d3.json("/tse/2014/data/test.json", function(error, graph) {
         <tr>
           <td><span class="fa fa-money fa-fw"></span><small> Total: <strong><span class="pull-right" id="total"></span></strong></small></td>
         </tr>
+        <tr>
+          <td><span class="fa fa-money fa-fw" id="icone_selecionado"></span><small> <span id="doador_selecionado"></span><strong><span class="pull-right" id="valor_selecionado"></span></strong></small></td>
+        </tr>
+
       </table>
 
-    </div>
-    </div>
+      <div id="chart"></div>
+      <script src="http://d3js.org/d3.v3.js"></script>
+      <script src="/tse/2014/assets/js/sankey.js"></script>
+      <script>
+       
+      var margin = {top: 0, right: 0, bottom: 0, left: 0},
+           width = $("#chart").parent().width() - margin.left - margin.right,
+          height = 280 - margin.top - margin.bottom,
+          radius = Math.min(width, height) / 2;
+     
+      var color = d3.scale.ordinal()
+          .domain([8,7,6,5,4,3,2,1,0])
+          .range(["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#006837","#004529"]);
+ 
+      var arc = d3.svg.arc()
+          .outerRadius(radius - 0)
+          .innerRadius(radius - 60);
+      
+      var pie = d3.layout.pie()
+          .sort(null)
+          .value(function(d) { return d.valor; });
+      
+      var svg = d3.select("#chart").append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .append("g")
+           .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+      
+      </script>
 
-    <h2><small>Confira abaixo os detalhes das transações:</small></h2>
-    <div class="row">
-      <div class="col-md-12">
-        <table id="details" class="table table-condensed" width="100%" cellspacing="0">
-        </table>
-      </div>
-    </div>
+    </div> <!-- ./col-md-4 -->
+    </div> <!-- ./row -->
 
-    </div>
+    </div> <!-- ./container -->
    </div> <!--./main -->
    </div> <!--./wrap -->
 
@@ -267,14 +160,34 @@ d3.json("/tse/2014/data/test.json", function(error, graph) {
 
     <script>
     function atualizar_resumo(resumo) {
-      console.log(resumo);
       $("#nome").html(resumo['nome']);
       $("#partido").html(resumo['partido']);
       $("#unidade").html(resumo['uf']);
       $("#total").html(moeda(resumo['total']));
+      $("#photo")[0].src="/tse/2014/assets/photos/" + resumo['sequencia'] + ".jpg";
     }
     function moeda(valor) {
       return "R$ " + valor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&\,');
+    }
+
+    function update_chart(data) {
+      var g = svg.selectAll(".arc")
+                 .data(pie(data))
+                 .enter().append("g")
+                         .attr("class", "arc");
+
+      g.append("path")
+        .attr("d", arc)
+        .on("mouseover", function(d) {
+          $("#icone_selecionado").show();
+          $("#doador_selecionado").html(d.data.doador);
+          $("#valor_selecionado").html(moeda(d.data.valor));
+        })                      
+        .on("mouseout", function(d) {           
+          $("#doador_selecionado").html("");
+          $("#valor_selecionado").html("");
+        })
+        .style("fill", function(d, i) { return color(i); });
     }
     </script>
 
@@ -297,12 +210,10 @@ d3.json("/tse/2014/data/test.json", function(error, graph) {
               { "sTitle": "Doador",     "mData": "doador", }, 
               { "sTitle": "CPF/CNPJ",   "mData": "cpf_cnpj" },
               { "sTitle": "Data",       "mData": "data" },
-              { "sTitle": "Recibo",     "mData": "recibo_eleitoral" },
-              { "sTitle": "Documento",  "mData": "documento" },
               { "sTitle": "Valor",      "mData": "valor" }
             ],
             "aoColumnDefs": [{
-                "targets": 5,
+                "targets": 3,
                 "render": function ( data, type, row ) {
                     return moeda(data);
                 }}
@@ -312,6 +223,21 @@ d3.json("/tse/2014/data/test.json", function(error, graph) {
         table.on('init.dt', function(e, settings, json) {
           atualizar_resumo(json['dados']);
         });
+
+       var data = [
+                   {'doador': 'beltrano', 'valor': 2000000},
+                   {'doador': 'fulano',   'valor': 500000},
+                   {'doador': 'beltrano', 'valor': 400000},
+                   {'doador': 'beltrano', 'valor': 310000},
+                   {'doador': 'beltrano', 'valor': 242000},
+                   {'doador': 'beltrano', 'valor': 240000},
+                   {'doador': 'beltrano', 'valor': 200000},
+                   {'doador': 'beltrano', 'valor': 20000},
+                   {'doador': 'beltrano', 'valor': 12000},
+                   {'doador': 'beltrano', 'valor': 10000},
+                   {'doador': 'fulano',   'valor': 20233}
+                  ]
+       update_chart(data);
       });
     </script>
   </body>
