@@ -78,9 +78,10 @@ def main():
                     candidato['uf'] = get_utf8(row[13])
                     candidato['candidatura'] = get_utf8(row[11])
                     candidato['sequencia'] = f.split('.')[0]
-                    candidato['eleito'] = get_eleito(f.split('.')[0],
+                    codigo = get_utf8(row[15])
+                    candidato['eleito'] = get_eleito(codigo,
                         os.path.join(root,"map-candidato-parlamentar.csv"))
-
+                    candidato['codigo'] = codigo
                     doacao = get_doacao(row)
                     doacoes.append(doacao)
                     total += doacao['valor']
@@ -93,7 +94,7 @@ def main():
                 details['dados'] = candidato
                 details['aaData'] = doacoes
                 # Salva arquivo individual por candidato
-                with open('%s.json' % f.split('.')[0], 'w') as jsonfile:
+                with open('%s.json' % candidato['codigo'], 'w') as jsonfile:
                   jsonfile.write(json.dumps(details, indent=4))
 
     output={}
