@@ -115,9 +115,8 @@ def main():
                     candidato['uf'] = get_utf8(row[13])
                     candidato['candidatura'] = get_utf8(row[11])
                     candidato['sequencia'] = f.split('.')[0]
-                    codigo = get_utf8(row[15])
-                    candidato['eleito'] = get_eleito(codigo,
-                        os.path.join(root,"map-candidato-parlamentar.csv"))
+                    codigo = "2014%s%s" % (get_uf(candidato['uf']), candidato['numero'])
+                    candidato['eleito'] = get_eleito(codigo, os.path.join(root,"map-candidato-parlamentar.csv"))
                     candidato['codigo'] = codigo
                     candidato['foto'] = foto % (get_uf(candidato['uf']), candidato['sequencia'])
                     doacao = get_doacao(row)

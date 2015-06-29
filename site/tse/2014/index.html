@@ -118,9 +118,10 @@
             "language": {
                 "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
             },
-            "order": [[ 4, "desc" ]],
+            "order": [[ 5, "desc" ]],
             "aoColumns": [
               { "sTitle": "Nome",      "mData": "nome" },
+              { "sTitle": "Eleito",      "mData": "eleito" },
               { "sTitle": "Numero",    "mData": "numero" },
               { "sTitle": "Partido",   "mData": "partido" },
               { "sTitle": "UF",        "mData": "uf" },
@@ -128,7 +129,7 @@
             ],
             "aoColumnDefs": [
                 {
-                "targets": 4,
+                "targets": 5,
                 "render": function ( data, type, row ) {
                     return moeda(data);
                 }},
@@ -138,6 +139,16 @@
                     var target = "/tse/2014/candidato/" + row.sequencia;
                     return "<a href=\"" + target + "\">" + data + "</a>";
                 }},
+                {
+                "targets": 1,
+                "render": function ( data, type, row ) {
+                    if (row.eleito) {
+                      return "<span class=\"label label-success\">Eleito</span>";
+                    } else {
+                      return "";
+                    }
+                }},
+
             ]
         });
 
