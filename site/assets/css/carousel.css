@@ -97,6 +97,9 @@ body {
 }
 
 
+#photo {
+  margin: 5px auto;
+}
 
 
 /* Pad the edges of the mobile views a bit */
