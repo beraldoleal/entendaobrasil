@@ -25,7 +25,7 @@
     <link href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    
+
     <link href="/tse/2014/assets/css/carousel.css" rel="stylesheet">
 
   </head>
@@ -34,7 +34,7 @@
 
 .arc path {
   stroke: #fff;
-} 
+}
 </style>
 
 
@@ -109,30 +109,30 @@
       <script src="http://d3js.org/d3.v3.js"></script>
       <script src="/tse/2014/assets/js/sankey.js"></script>
       <script>
-       
+
       var margin = {top: 0, right: 0, bottom: 0, left: 0},
            width = $("#chart").parent().width() - margin.left - margin.right,
           height = 280 - margin.top - margin.bottom,
           radius = Math.min(width, height) / 2;
-     
+
       var color = d3.scale.ordinal()
           .domain([8,7,6,5,4,3,2,1,0])
           .range(["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#006837","#004529"]);
- 
+
       var arc = d3.svg.arc()
           .outerRadius(radius - 0)
           .innerRadius(radius - 60);
-      
+
       var pie = d3.layout.pie()
           .sort(null)
           .value(function(d) { return d.valor; });
-      
+
       var svg = d3.select("#chart").append("svg")
           .attr("width", width)
           .attr("height", height)
           .append("g")
            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-      
+
       </script>
 
     </div> <!-- ./col-md-4 -->
@@ -164,7 +164,7 @@
       $("#partido").html(resumo['partido']);
       $("#unidade").html(resumo['uf']);
       $("#total").html(moeda(resumo['total']));
-      $("#photo")[0].src="/tse/2014/assets/photos/" + resumo['sequencia'] + ".jpg";
+      $("#photo")[0].src=resumo['foto'];
     }
     function moeda(valor) {
       return "R$ " + valor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&\,');
@@ -182,8 +182,8 @@
           $("#icone_selecionado").show();
           $("#doador_selecionado").html(d.data.doador);
           $("#valor_selecionado").html(moeda(d.data.valor));
-        })                      
-        .on("mouseout", function(d) {           
+        })
+        .on("mouseout", function(d) {
           $("#doador_selecionado").html("");
           $("#valor_selecionado").html("");
         })
@@ -206,8 +206,9 @@
             "language": {
                 "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
             },
+            "order": [[ 3, "desc" ]],
             "aoColumns": [
-              { "sTitle": "Doador",     "mData": "doador", }, 
+              { "sTitle": "Doador",     "mData": "doador", },
               { "sTitle": "CPF/CNPJ",   "mData": "cpf_cnpj" },
               { "sTitle": "Data",       "mData": "data" },
               { "sTitle": "Valor",      "mData": "valor" }

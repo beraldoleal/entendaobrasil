@@ -118,6 +118,7 @@
             "language": {
                 "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
             },
+            "order": [[ 4, "desc" ]],
             "aoColumns": [
               { "sTitle": "Nome",      "mData": "nome" },
               { "sTitle": "Numero",    "mData": "numero" },
@@ -125,7 +126,8 @@
               { "sTitle": "UF",        "mData": "uf" },
               { "sTitle": "Total",     "mData": "total" }
             ],
-            "aoColumnDefs": [{
+            "aoColumnDefs": [
+                {
                 "targets": 4,
                 "render": function ( data, type, row ) {
                     return moeda(data);
@@ -136,7 +138,6 @@
                     var target = "/tse/2014/candidato/" + row.sequencia;
                     return "<a href=\"" + target + "\">" + data + "</a>";
                 }},
-
             ]
         });
 

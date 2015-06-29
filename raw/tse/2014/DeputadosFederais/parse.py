@@ -22,7 +22,8 @@ def get_eleito(entrada, mapfile):
     return False
 
 def get_value(value):
-    number = float("".join(value.split()[1].split(",")[0].split(".")))
+    #number = float("".join(value.split()[1].split(",")[0].split(".")))
+    number = float(value.split()[1].replace('.', '').replace(',','.'))
     return number
 
 def get_utf8(value):
@@ -55,8 +56,44 @@ def get_doador(row):
     else:
         return (row[2], row[3], "Indireta")
 
+def clean(text):
+  remove = ['á', 'ç', 'ã', 'é', 'i', '\x83', '\x81', '\x8d', '\x94']
+  return text.translate(None, ''.join(remove))
+
+def get_uf(unidade):
+  ufs = {'ACRE': 'AC',
+         'ALAGOAS': 'AL',
+         'AMAZONAS': 'AM',
+         'AMAP': 'AP',
+         'BAHIA': 'BA',
+         'CEAR': 'CE',
+         'DISTRITO FEDERAL': 'DF',
+         'ESPRITO SANTO': 'ES',
+         'GOIS': 'GO',
+         'MARANHO': 'MA',
+         'MATO GROSSO': 'MT',
+         'MATO GROSSO DO SUL': 'MS',
+         'MINAS GERAIS': 'MG',
+         'PAR': 'PA',
+         'PARABA': 'PB',
+         'PARAN': 'PR',
+         'PERNAMBUCO': 'PE',
+         'PIAU': 'PI',
+         'RIO DE JANEIRO': 'RJ',
+         'RIO GRANDE DO NORTE': 'RN',
+         'RIO GRANDE DO SUL': 'RS',
+         'RONDNIA': 'RO',
+         'RORAIMA': 'RR',
+         'SANTA CATARINA': 'SC',
+         "SO PAULO": 'SP',
+         'SERGIPE': 'SE',
+         'TOCANTINS': 'TO'}
+
+  return ufs[clean(unidade)]
+
 def main():
     candidatos = []
+    foto = "http://divulgacand2014.tse.jus.br/divulga-cand-2014/eleicao/2014/UF/%s/foto/%s.jpg"
     root, dirs, files = os.walk('.').next()
     montante = 0
     for f in files:
@@ -82,6 +119,7 @@ def main():
                     candidato['eleito'] = get_eleito(codigo,
                         os.path.join(root,"map-candidato-parlamentar.csv"))
                     candidato['codigo'] = codigo
+                    candidato['foto'] = foto % (get_uf(candidato['uf']), candidato['sequencia'])
                     doacao = get_doacao(row)
                     doacoes.append(doacao)
                     total += doacao['valor']
@@ -94,7 +132,7 @@ def main():
                 details['dados'] = candidato
                 details['aaData'] = doacoes
                 # Salva arquivo individual por candidato
-                with open('%s.json' % candidato['codigo'], 'w') as jsonfile:
+                with open('%s.json' % candidato['sequencia'], 'w') as jsonfile:
                   jsonfile.write(json.dumps(details, indent=4))
 
     output={}
