@@ -5,6 +5,9 @@ static/css/*
 static/flags/*
 media/photos/*
 
+raw/tse/2014/DeputadosFederais/candidato/*.json
+raw/tse/2014/DeputadosFederais/doador/*.json
+
 *.swp
 
 site/tse/2014/data/*.json

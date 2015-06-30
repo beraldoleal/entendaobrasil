@@ -17,6 +17,8 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="/tse/2014/assets/js/tse2014.js"></script>
+
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
@@ -25,7 +27,7 @@
     <link href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    
+
     <link href="assets/css/carousel.css" rel="stylesheet">
 
   </head>
@@ -69,14 +71,31 @@
       <div class="col-md-12">
         <h1>Em 2014, <strong><big><span id="montante"></span></big></strong> foram doados apenas para os <strong><span id="tot-candidatos"></span></strong> candidatos ao cargo de Deputado Federal. <small>Confira abaixo os detalhes:</small></h1>
       </div>
+       <h2 id="loading"><i class="fa fa-spinner fa-pulse"></i> Aguarde. Atualizando dados...</h2>
     </div>
 
     <hr class="featurette-divider">
 
     <div class="row">
       <div class="col-md-12">
-        <table id="candidatos" class="table table-condensed" width="100%" cellspacing="0">
-        </table>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#bycandidatos" aria-controls="bycandidatos" role="tab" data-toggle="tab">Por candidatos</a></li>
+          <li role="presentation"><a href="#bydoadores" aria-controls="bydoadores" role="tab" data-toggle="tab">Por doadores</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="bycandidatos"><br>
+            <table id="candidatos" class="table table-condensed" width="100%" cellspacing="0">
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="bydoadores">
+            <table id="doadores" class="table table-condensed" width="100%" cellspacing="0">
+            </table>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -101,19 +120,10 @@
     <script src="assets/js/docs.min.js"></script>
 
     <script>
-    function atualizar_resumo(resumo) {
-      $("#montante").html(moeda(resumo['montante']));
-      $("#tot-candidatos").html(resumo['candidatos']);
-    }
-    function moeda(valor) {
-      return "R$ " + valor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&\,');
-    }
-    </script>
-
-    <script>
       $(document).ready(function() {
 
-        var table = $('#candidatos').DataTable({
+        // Por candidatos
+        var table1 = $('#candidatos').DataTable({
             "ajax": "/tse/2014/data/candidato/list.json",
             "language": {
                 "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
@@ -152,9 +162,42 @@
             ]
         });
 
-        table.on('init.dt', function(e, settings, json) {
+        table1.on('init.dt', function(e, settings, json) {
           atualizar_resumo(json['resumo']);
         });
+
+        // Por doadores
+
+        var table2 = $('#doadores').DataTable({
+            "ajax": "/tse/2014/data/doador/list.json",
+            "language": {
+                "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
+            },
+            "order": [[ 2, "desc" ]],
+            "aoColumns": [
+              { "sTitle": "Doador",      "mData": "nome" },
+              { "sTitle": "CPF/CNPJ",    "mData": "cpf_cnpj" },
+              { "sTitle": "Total Doado", "mData": "total" }
+            ],
+            "aoColumnDefs": [
+                {
+                "targets": 2,
+                "render": function ( data, type, row ) {
+                    return moeda(data);
+                }},
+                {
+                "targets": 0,
+                "render": function ( data, type, row ) {
+                    var target = "/tse/2014/doador/" + clean(row.cpf_cnpj);
+                    return "<a href=\"" + target + "\">" + data + "</a>";
+                }}
+            ]
+        });
+
+        table2.on('init.dt', function(e, settings, json) {
+          $("#loading").hide();
+        });
+
       });
     </script>
   </body>

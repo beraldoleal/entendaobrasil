@@ -18,6 +18,7 @@
     <![endif]-->
 
     <script src="/tse/2014/assets/js/tse2014.js"></script>
+
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
@@ -77,7 +78,7 @@
 
     <div class="row">
       <div class="col-md-9">
-        <h4><span class="fa fa-user fa-fw"></span>Candidato(a): <span id="nome"></span></h4><br>
+        <h4><span class="fa fa-user fa-fw"></span>Doador(a): <span id="nome"></span> <small>(<span id="cpf_cnpj"></span>)</small></h4><br>
         <table id="details" class="table table-condensed" width="100%" cellspacing="0">
         </table>
 
@@ -87,13 +88,6 @@
     <div class="col-md-3">
 
       <table class="table table-condensed top-buffer">
-        <img id="photo" src="" class="img-responsive">
-        <tr>
-          <td><span class="fa fa-group fa-fw"></span><small> Partido: <span class="pull-right" id="partido"></span></small></td>
-        </tr>
-        <tr>
-          <td><span class="fa fa-flag fa-fw"></span><small> UF: <span class="pull-right" id="unidade"></span></small></td>
-        </tr>
         <tr>
           <td><span class="fa fa-money fa-fw"></span><small> Total: <strong><span class="pull-right" id="total"></span></strong></small></td>
         </tr>
@@ -167,26 +161,28 @@
         var sequencia = href.substr(href.lastIndexOf('/') + 1);
 
         var table = $('#details').DataTable({
-            "ajax": "/tse/2014/data/candidato/"+sequencia+".json",
+            "ajax": "/tse/2014/data/doador/"+sequencia+".json",
             "language": {
                 "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
             },
-            "order": [[ 3, "desc" ]],
+            "order": [[ 5, "desc" ]],
             "aoColumns": [
-              { "sTitle": "Doador",     "mData": "doador", },
-              { "sTitle": "CPF/CNPJ",   "mData": "cpf_cnpj" },
+              { "sTitle": "Candidato",     "mData": "candidato", },
+              { "sTitle": "Numero",     "mData": "numero", },
+              { "sTitle": "Partido",   "mData": "partido" },
+              { "sTitle": "UF",   "mData": "uf" },
               { "sTitle": "Data",       "mData": "data" },
               { "sTitle": "Valor",      "mData": "valor" }
             ],
             "aoColumnDefs": [{
-                "targets": 3,
+                "targets": 5,
                 "render": function ( data, type, row ) {
                     return moeda(data);
                 }},
                 {
                 "targets": 0,
                 "render": function ( data, type, row ) {
-                    var target = "/tse/2014/doador/" + clean(row.cpf_cnpj);
+                    var target = "/tse/2014/candidato/" + row.sequencia;
                     return "<a href=\"" + target + "\">" + data + "</a>";
                 }},
 
@@ -194,18 +190,17 @@
         });
 
         table.on('init.dt', function(e, settings, json) {
-          atualizar_candidato(json['dados']);
+          atualizar_doador(json['dados']);
           summary = {};
           for (key in json['aaData']) {
             doacao = json['aaData'][key];
-            id = clean(doacao.cpf_cnpj);
+            id = clean(doacao.partido);
             if (summary[id]) {
               summary[id]['valor'] += doacao.valor;
             } else {
               summary[id] = {};
               summary[id]['valor'] = doacao.valor;
-              summary[id]['doador'] = doacao.doador;
-              summary[id]['cpf_cnpj'] = doacao.cpf_cnpj;
+              summary[id]['doador'] = doacao.partido;
             }
           }
 
