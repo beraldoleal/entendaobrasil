@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="/tse/2014/assets/ico/favicon.ico">
+
+    <title>Eleições 2014 - Relatório de Doações - Deputados Federais</title>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/tse/2014/assets/js/tse2014.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/tse/2014/assets/css/carousel.css" rel="stylesheet">
+
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+  <div class="wrap">
+  <div id="main" class="container clear-top">
+    <div class="navbar-wrapper">
+
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Entenda o Brasil</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav" id="navigation">
+                <li class="active"><a href="/tse/2014">Doações 2014</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container">
+
+    <hr class="featurette-divider">
+
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Em 2014, <strong><big><span id="montante"></span></big></strong> foram doados apenas para os <strong><span id="tot-candidatos"></span></strong> candidatos ao cargo de Deputado Federal. <small>Confira abaixo os detalhes:</small></h1>
+      </div>
+       <h2 id="loading"><i class="fa fa-spinner fa-pulse"></i> Aguarde. Atualizando dados...</h2>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation"><a href="/tse/2014/bycandidatos/" role="tab">Por candidatos</a></li>
+          <li role="presentation" class="active"><a href="#" role="tab">Por doadores</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane" id="bycandidatos"><br>
+          </div>
+          <div role="tabpanel" class="tab-pane active" id="bydoadores">
+            <table id="doadores" class="table table-condensed" width="100%" cellspacing="0">
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+   </div> <!--./main -->
+   </div> <!--./wrap -->
+
+      <!-- FOOTER -->
+      <div id="footer" class="site-footer">
+<p><small>Todos os dados exibidos neste site, são obtidos dos devidos órgãos públicos competentes por meio da Lei de Acesso à informação.<br>
+ O conteúdo original, quando não informado, está disponível sobre a licença
+<a href="http://creativecommons.org/licenses/by/3.0/deed.pt_BR">Creative Commons Attribution 3.0</a></small>
+<a href="http://creativecommons.org/licenses/by/3.0/deed.pt_BR">
+<img src="http://i.creativecommons.org/l/by/3.0/80x15.png" width="80" height="15" alt="Creative Commons BY 3.0" pagespeed_url_hash="3352115067"></a></p>
+      </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="/tse/2014/assets/js/bootstrap.min.js"></script>
+    <script src="/tse/2014/assets/js/docs.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+
+        // Por doadores
+
+        var table2 = $('#doadores').DataTable({
+            "ajax": "/tse/2014/data/doador/list.json",
+            "language": {
+                "url": "http://cdn.datatables.net/plug-ins/1.10.7/i18n/Portuguese-Brasil.json"
+            },
+            "order": [[ 2, "desc" ]],
+            "aoColumns": [
+              { "sTitle": "Doador",      "mData": "nome", "width": "70%"},
+              { "sTitle": "CPF/CNPJ",    "mData": "cpf_cnpj" },
+              { "sTitle": "Total Doado", "mData": "total" }
+            ],
+            "aoColumnDefs": [
+                {
+                "targets": 2,
+                "render": function ( data, type, row ) {
+                    return moeda(data);
+                }},
+                {
+                "targets": 0,
+                "render": function ( data, type, row ) {
+                    var target = "/tse/2014/doador/" + clean(row.cpf_cnpj);
+                    return "<a href=\"" + target + "\">" + data + "</a>";
+                }}
+            ]
+        });
+
+        table2.on('init.dt', function(e, settings, json) {
+          //atualizar_resumo(json['resumo']);
+          $("#loading").hide();
+        });
+
+      });
+    </script>
+  </body>
+</html>
