@@ -18,7 +18,8 @@ function atualizar_resumo(resumo) {
 }
 
 function moeda(valor) {
-  return "R$ " + valor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&\,');
+  return "R$ " + valor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g,'$&\.')
+                      .replace(/\.(\d{2})$/g,'\,$1');
 }
 
 function clean(cpf_cnpj) {
